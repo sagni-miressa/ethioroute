@@ -25,3 +25,5 @@ class RouteSegment:
 
     def __repr__(self):
         return f"<{self.mode.value}: {self.start_station} -> {self.end_station} ({self.distance_km}km, {self.fare_etb} ETB)>"
+    def is_valid(self) -> bool:
+        return self.distance_km > 0 and self.fare_etb >= 0
