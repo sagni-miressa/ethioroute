@@ -1,19 +1,26 @@
-from models import RouteSegment, TransitType
-from router import TransitGraph
+from dataset import load_addis_transit_network
 
 def main():
-    network = TransitGraph()
+    network = load_addis_transit_network()
 
-    # Add sample routes across Addis Ababa
-    network.add_route(RouteSegment("Bole", "Piazza", 8.5, 15.0, TransitType.ANBESSA_BUS))
-    network.add_route(RouteSegment("Bole", "Piazza", 8.5, 25.0, TransitType.MINIBUS))
-    network.add_route(RouteSegment("Bole", "Megenagna", 4.0, 10.0, TransitType.SHEGER_BUS))
+    origin = "Bole"
+    destination = "Piazza"
 
-    print("--- EthioRoute Search: Bole -> Piazza ---")
-    direct_routes = network.find_direct_routes("Bole", "Piazza")
-    
-    for route in direct_routes:
-        print(route)
+    print("==================================================")
+    print(f" ETHIOROUTE OPTIMIZER: {origin} -> {destination}")
+    print("==================================================")
+
+    paths = network.find_all_paths(origin, destination)
+    print(f"\nFound {len(paths)} total connection path(s):")
+    for idx, path in enumerate(paths, 1):
+        print(f" Option {idx}: {path}")
+
+    cheapest = network.find_cheapest_route(origin, destination)
+    shortest = network.find_shortest_route(origin, destination)
+
+    print("\n--- OPTIMAL CHOICES ---")
+    print(f"Best Value  : {cheapest}")
+    print(f"Most Direct : {shortest}")
 
 if __name__ == "__main__":
     main()
