@@ -29,3 +29,25 @@ class RouteSegment:
 
     def __repr__(self):
         return f"<{self.mode.value}: {self.start_station} -> {self.end_station} ({self.distance_km}km, {self.fare_etb} ETB)>"
+
+class TransitPath:
+    def __init__(self, segments: list[RouteSegment]):
+        self.segments = segments
+
+    @property
+    def total_distance(self) -> float:
+        return sum(s.distance_km for s in self.segments)
+
+    @property
+    def total_fare(self) -> float:
+        return sum(s.fare_etb for s in self.segments)
+
+    @property
+    def transfers(self) -> int:
+        return max(0, len(self.segments) - 1)
+
+    def __repr__(self):
+        if not self.segments:
+            return "<Path: Empty>"
+        stops = " -> ".join([self.segments[0].start_station] + [s.end_station for s in self.segments])
+        return f"<Path: {stops} | Total: {self.total_distance:.1f}km, {self.total_fare:.2f} ETB, {self.transfers} transfers>"
