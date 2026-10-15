@@ -48,3 +48,15 @@ class TransitGraph:
                     queue.append((segment.end_station, path + [segment]))
 
         return results
+
+    def find_cheapest_route(self, start: str, destination: str) -> TransitPath | None:
+        paths = self.find_all_paths(start, destination)
+        if not paths:
+            return None
+        return min(paths, key=lambda p: p.total_fare)
+
+    def find_shortest_route(self, start: str, destination: str) -> TransitPath | None:
+        paths = self.find_all_paths(start, destination)
+        if not paths:
+            return None
+        return min(paths, key=lambda p: p.total_distance)
