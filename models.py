@@ -1,6 +1,4 @@
 from enum import Enum
-from fare_calculator import FareCalculator
-
 class TransitType(Enum):
     MINIBUS = "Minibus Taxi"
     ANBESSA_BUS = "Anbessa Bus"
