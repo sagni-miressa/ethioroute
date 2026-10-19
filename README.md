@@ -1,6 +1,6 @@
 # EthioRoute - Public Transit Optimizer for Addis Ababa
 
-An algorithmic routing engine and multi-modal transit planner designed to calculate optimal travel paths, multi-hop transfers, and accurate fare estimations across Anbessa Bus, Sheger Bus, Light Rail Transit (LRT), and Minibus Taxis in Addis Ababa, Ethiopia.
+An algorithmic routing engine and multi-modal transit planner designed to calculate optimal travel paths, multi-hop transfers, and accurate fare estimations across Anbessa Bus, Sheger Bus, Light Rail Transit (LRT), and Minibus Taxis in Addis Ababa, and also which can be abroded to all Ethiopia.
 
 An algorithmic routing engine for calculating optimal public transit routes (Anbessa Bus, Sheger Bus, LRT, and Minibus Taxis) and fare estimations in Addis Ababa.
 
